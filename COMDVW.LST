@@ -1,0 +1,316 @@
+;COMDVW.LST/V9.00, 1991-2006/gs.
+;Command Reference File for COMSET.EXE.
+;First Entry: Command in hex notation, without checksum.
+;  'X': Denotes appended data bytes
+;Second Entry: Command name.
+;  '*': Extension of the original Sony Protocol format
+;
+;System Control Commands:
+000C,Local Disable
+0011,Device Type Request
+001D,Local Enable
+0XF2,Preliminary
+01FAA1,TeleFile/Preliminary*
+01FAAF,TeleFile/Preliminary*
+0XFA,TeleFile/Preliminary*
+01FB80,TeleFile/Preliminary*
+01FB90,TeleFile/Preliminary*
+0XFB,TeleFile/Preliminary*
+0XFC,Preliminary
+;
+;System Control Return:
+1001,Ack
+12112020,BVW-60 NTSC
+12112120,BVW-60 PAL
+12112021,BVW-65 NTSC
+12112121,BVW-65 PAL
+12112024,BVW-70 NTSC
+12112124,BVW-70 PAL
+12112025,BVW-75 NTSC
+12112125,BVW-75 PAL
+12112030,BVW-50 NTSC
+12112130,BVW-50 PAL
+12112046,BVW-D75 NTSC
+12112146,BVW-D75 PAL
+121120E2,HDW-2000 NTSC
+121121E2,HDW-2000 PAL
+12118016,DSR-1600 NTSC
+12118116,DSR-1600 PAL
+1211A070,MAV-555 NTSC
+1211A170,MAV-555 PAL
+1211A091,PDW-1500 NTSC
+1211A191,PDW-1500 PAL
+1211B000,DVW-A500 NTSC
+1211B100,DVW-A500 PAL
+1211B001,DVW-A510 NTSC
+1211B101,DVW-A510 PAL
+1211B010,DVW-500 NTSC
+1211B110,DVW-500 PAL
+1211B011,DVW-510 NTSC
+1211B111,DVW-510 PAL
+1211B060,MSW-M2000 NTSC
+1211B160,MSW-M2000 PAL
+1211B061,MSW-A2000 NTSC
+1211B161,MSW-A2000 PAL
+1211B063,MSW-M2100 NTSC
+1211B163,MSW-M2100 PAL
+1211B070,J3 NTSC
+1211B170,J3 PAL
+1211F030,ARJ-D580 NTSC*
+1211F130,ARJ-D580 PAL*
+1211F94D,Media Pool PAL*
+1X11,Device Type
+111201,Undefined Command
+111202,Software Overrun
+111204,Checksum Error
+111210,Parity Error
+111220,Overrun Error
+111240,Framing Error
+111280,Time Out
+1X12,NAK
+1XFA,TeleFile/Preliminary*
+1XFB,TeleFile/Preliminary*
+;
+;Transport Control Commands:
+2000,Stop
+2001,Play
+2002,Rec
+2004,Standby Off
+2005,Standby On
+200D,DMC Start
+200F,Eject
+2010,FFWD
+2X11,Jog FWD
+2X12,Var FWD
+2X13,Shuttle FWD
+2020,Rewind
+2X21,Jog REV
+2X22,Var REV
+2X23,Shuttle REV
+2030,Preroll
+2X31,Cueup With Data
+2X34,Sync Play
+2X38,Program Play +
+2X39,Program Play -
+203C,DMC Preroll
+2040,Preview
+2041,Review
+2042,Auto Edit
+204B,DMC Run
+204C,DMC Preview
+2052,Tension Release
+2054,Anti Clog Timer Disable
+2055,Anti Clog Timer Enable
+2X5C,DMC Set FWD
+2X5D,DMC Set REV
+2060,Full EE Off
+2061,Full EE On
+2063,Selected EE On
+2064,Edit Off
+2065,Edit On
+206A,Freeze Off
+206B,Freeze On
+2X81,Create_New_File*
+2X82,Open_File*
+;
+;Preset & Select Control Commands:
+4X00,Timer1 Preset
+4X01,Preliminary/DVW Series
+4X04,Timecode Preset
+4X05,U-Bit Preset
+4008,Timer1 Reset
+4X09,Preliminary/DVW Series
+4010,In Entry
+4011,Out Entry
+4012,A In Entry
+4013,A Out Entry
+4X14,In Data Preset
+4X15,Out Data Preset
+4X16,A In Data Preset
+4X17,A Out Data Preset
+4018,In Shift +
+4019,In Shift -
+401A,Out Shift +
+401B,Out Shift -
+401C,A In Shift +
+401D,A In Shift -
+401E,A Out Shift +
+401F,A Out Shift -
+4020,In Reset
+4021,Out Reset
+4022,A In Reset
+4023,A Out Reset
+4024,In Recall
+4025,Out Recall
+4026,A In Recall
+4027,A Out Recall
+402D,Lost Lock Reset
+4X30,Edit Preset
+4X31,Preroll Time Preset
+4X32,Tape/Auto Select
+4X33,Servo Reference Select
+4X34,Head Select
+4X35,Color Frame Select
+4X36,Timer Mode Select
+4X37,Input Check
+4X3A,Edit Field Select
+4X3D,Preread Mode Select
+433F044A00,Multi Feed On/Preliminary
+433F000000,Multi Feed Off
+4X3F,Multi Feed
+4040,Auto Mode Off
+4041,Auto Mode On
+4044,Audio Split Off
+4045,Audio Split On
+4046,Variable Memory Off
+4047,Variable Memory On
+4048,Video Reference Disable Off
+4049,Video Reference Disable On
+4X50,DA Input Select
+4X51,DA Sys Emphasis Preset
+4X54,Extended DA Input Select
+4X60,VITC Bypass
+4X61,LTCG Mode Select
+4X62,Preliminary/DVW Series
+4X63,Record LTC Select
+4X70,Video Input Select
+4X91,Output Video Level
+4X92,Output Setup Level
+4X93,Output Chroma Level
+4X95,Extended Output Video Level
+4X98,Output H Phase
+4X99,Output SC Phase
+4X9A,Output Video Hue
+4X9C,Output System Phase
+4X9E,Superimpose
+4X9F,Video Control Data Set
+4XA0,Audio Input Level
+4XA1,Audio Output Level
+4XA3,Extended Audio Input Level
+4XA4,Extended Audio Output Level
+4XA8,Audio Output Phase
+4XAE,Audio Monitor Channel Select
+4XAF,Audio Control Data Set
+4XC0,Preliminary
+4XC1,Preliminary
+4XC2,Preliminary
+4XC3,Preliminary
+4XC4,Preliminary
+4XC5,Preliminary
+4XB8,Local Key Map Control
+4XFA,Standby Off Time
+;
+;Sense Request Commands:
+6X0A,TC Gen Data Sense
+6X0C,Current Time Sense
+6010,In Data Sense
+6011,Out Data Sense
+6012,A In Data Sense
+6013,A Out Data Sense
+6X20,Status Sense
+6X21,Extended VTR Status Sense
+6X23,Signal Control Data Sense
+6X24,Supported Signal Sense
+6X25,Video Control Data Sense
+6X26,Audio Control Data Sense
+6X28,Local Key Map Sense
+6X2A,HM Data Sense
+602B,Remain Time Sense
+602E,Command Speed Sense
+602F,Var Mem Speed Sense
+6X30,Edit Preset Sense
+6031,Preroll Time Sense
+6032,Tape/Auto Status Sense
+6036,Timer Mode Sense
+6X3F,Preliminary
+6050,DA Input Sense
+6051,DA Sys Emphasis Sense
+6052,DA Inp Emphasis Sense
+6053,DA PB Emphasis Sense
+6X54,Extended DA Input Sense
+6058,DA Sampling Freq Sense
+6060,VITC Bypass Sense
+6061,LTCG Mode Sense
+6062,VITCG Mode Sense
+6063,Record LTC Sense
+6070,Video Input Sense
+6081,Active_Filename_Query*
+6082,Get_First_ID*
+6083,Get_Next_ID*
+6084,Get_First_Deleted_ID*
+6085,Get_Next_Deleted_ID*
+6086,Get_First_Added_ID*
+6087,Get_Next_ID_Added_ID*
+6X91,ID_Duration*
+609E,Superimpose Sense
+60AE,Audio Monitor Channel Sense
+6XC2,Preliminary
+6XC3,Preliminary
+6XC4,Preliminary
+6XC6,Preliminary
+6XC7,Preliminary
+6XC8,Preliminary
+;
+;Sense Return Commands:
+7X00,Timer1 Data
+7X04,LTC Time (and UB) Data
+7X05,LTC UB Data
+7X06,VITC Time (and UB) Data
+7X07,VITC UB Data
+7X08,Gen Time (and UB) Data
+7X09,Gen UB Data
+700D,Request Time Data Missing
+7X10,In Data
+7X11,Out Data
+7X12,A In Data
+7X13,A Out Data
+7X14,LTC Interpolated Time (and UB) Data
+7X16,VITC Hold Time (and UB) Data
+7X20,Status Data
+7X21,Extended VTR Status Data
+7X23,Signal Control Data
+7X24,Supported Signal
+7X25,Video Control Data
+7X26,Audio Control Data
+7X28,Local Key Map Data
+7X2A,HM Data
+7X2B,Remain Time Data
+7X2E,Command Speed Data
+7X2F,Var Mem Speed Data
+7X30,Edit Preset Data
+7X31,Preroll Time Data
+7X32,Tape/Audio Status Data
+7X36,Timer Mode Data
+7X3F,Preliminary
+7X50,DA Input Status
+7X51,DA Sys Emphasis Status
+7X52,DA Inp Emphasis Status
+7X53,DA PB Emphasis Status
+7X54,Extended DA Input Status
+7X58,DA Sampling Freq Status
+7X60,VITC Bypass Status
+7X61,LTCG Mode Status
+7X62,VITCG Mode Status
+7X63,Record LTC Status
+7X70,Video Input Status
+7X81,Query_Data*
+7X82,ID-Data*
+7X84,Deleted_Data*
+7X86,Added_Data*
+7X91,Duration_Data*
+7X9E,Superimpose Status
+7XAE,Audio Monitor Channel Status
+7XC2,Preliminary
+7XC3,Preliminary
+7XC4,Preliminary
+7XC6,Preliminary
+7XC7,Preliminary
+7XC8,Preliminary
+;
+;Test Entries:
+1211B100,DVW-A500 PAL
+740424595923,LTC TC Data
+7920008180000000000001,Status Data
+1FFAAB84004D53572D4D3230303053594C73,TeleFile/Preliminary*
+;
+;CommandLineEntries=294
