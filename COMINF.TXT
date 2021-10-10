@@ -1,0 +1,551 @@
+[Inf]SPM9.00 Programminfo
+
+
+1. Allgemeines
+---------------------------------------------------------------------------
+Das Programm comset.exe (SPM: Serial Port Monitor/Sony Protocol Monitor)
+ermoeglicht die Ueberwachung des Datenverkehrs ueber die seriellen Schnitt-
+stellen von Rechner-Verbindungen mit bis zu vier gleichzeitig aktiven COM-
+Ports. Dabei lassen sich neben dem RS-232C-Format - bei Verwendung von ent-
+sprechenden Kabelausfuehrungen - ebenfalls RS-422-Schnittstellen monitoren
+oder aktiv steuern.
+
+SPM bietet als weitere Funktionen die Ueberwachung der im professionellen
+Umfeld benutzten Formate SONY PROTOCOL und TIMECODE.
+
+
+2. Systemvoraussetzungen
+---------------------------------------------------------------------------
+SPM ist eine reine Softwareloesung; es werden keine zusaetzlichen Inter-
+face-Geraete benoetigt. SPM wurde als MS-DOS-Programm realisiert, um die
+Anforderungen an die Computer-Hardware gering zu halten. So lassen sich
+auch aeltere, fuer andere Zwecke nicht mehr verwendbare Rechner fuer die
+Ueberwachungsaufgaben von SPM verwenden. 
+Zum Betrieb wird ein IBM-kompatibler Rechner oder Notebook mit mindestens
+einer seriellen RS-232C-Schnittstelle benoetigt.
+
+Installation.
+- Der Installationsvorgang von SPM beschraenkt sich darauf, die comset.zip-
+  Datei in ein frei waehlbares Unterverzeichnis auf der Festplatte (bei-
+  spielsweise "C:\Programs\SPM\") zu kopieren und zu entpacken.
+  Gestartet wird SPM durch Aufruf von comset.exe oder unter Windows, durch
+  den Aufruf der Verknuepfung von comset.exe.
+
+MSDOS622, Windows3.11.
+- Keine Programm-Funktionseinschraenkungen.
+- Lange Windows-Dateinamen werden *nicht unterstuetzt*.
+
+32Bit-Windows/WindowsXP.
+- Das Programm *unterstuetzt* im DOS-Fenster die gebraeuchlichsten Windows-
+  funktionen.
+- Lange Windows-Dateinamen *sind nutzbar*.
+- Drag&Drop auf den Programm-Dateinamen, das DOS-Fenster oder den Shortcut,
+  falls angelegt, *ist nutzbar*.
+- Einige Programmfunktionen sind *nicht ausfuehrbar*.
+- Vollbildmodus kann ueber die Tastenkombination [ALT] + [RETURN] einge-
+  stellt werden.
+
+64Bit-Windows/WindowsXP.
+- Betrieb ist nur mit Hilfe eines DOS-Emulators (hier "DOSBox 0.74") moeglich.
+- Kopiere comset.zip in ein frei waehlbares Verzeichnis auf dem Zielrechner
+  und entpacke comset.zip z.B. in "D:\Program Files (x86)\SPM\".
+  Lege eine Verknuepfung von SPM64.cmd auf dem Desktop ab und weise ihr
+  comset.ico zu.
+- Starte SPM ueber SPM64.cmd oder die Verknuepfung von SPM64.cmd.
+- Schalte auf Vollbild mit [ALT] + [RETURN]. 
+- Drag&Drop von Dateien auf die Verknuepfung *funktioniert*; in einzelnen
+  Faellen hakt es aber, da die Namensbehandlung des DOS-Emulators nach
+  Windows98-Vorgaben erfolgt.
+- Einige Programmfunktionen sind *nicht ausfuehrbar*.
+- Lange Windows-Dateinamen werden *nicht unterstuetzt*.
+- Der DOS-Emulator verlangsamt, z.B. bei Dateizugriffen, die Programmm-
+  ausfuehrung.
+- Der DOS-Emulator benutzt teilweise andere Laufwerkbezeichnungen: Laufwerk
+  C: zeigt auf das Windows-Verzeichnis, in dem das Programm abgelegt
+  ist. Moechte man das Windows-Laufwerk C: ansprechen, dann benutze man
+  Laufwerk X: des Programms.
+- Ein besonderer Vorteil des DOS-Emulators ist, dass der DOS-Emulator
+  auf dem Zielrechner *nicht installiert werden muss* und damit moeglicher
+  Missmut des Rechner-Besitzers vermieden wird.
+
+WindowsNT-Linie.
+- Alle WindowsNT-Versionen *unterbrechen* die Programmausfuehrung mit einer
+  Umschaltung auf den Desktop, wenn das COM-Port-Register LCR direkt
+  gelesen wird. Ursache: Die seriellen Schnittstellen werden *immer* ueber
+  das DOS-Fenster gemeldet, auch wenn sie physisch nicht existieren (Micro-
+  soft-Syndrom). Ein Workaroud fuer dieses stoerende Verhalten gibt es
+  nicht.
+
+Android. - Preliminary, not yet tested -
+----------------------------------------------------------------------------
+- Connect your smartphone via USB to a computer or laptop that contains
+  COMSET.ZIP.
+- Extract all files of COMSET.ZIP.
+- Create a new folder "SPM" in the root folder of your smartphone and
+  copy the extracted files from the computer to this folder.
+- Install Magic DOSBOX on your smartphone.
+- Add a new set with the name "SPM" and enter the relevant parameters.
+- Place a shortcut of the SPM set icon on the home screen.
+- (This step may be omitted) If you want to modify specific parameters then
+  open "Configuration" and edit the "dosrunSPM.conf": Leave all parameters as
+  they are with the exception of "Expert Adjustments".
+  Enable the "Expert" mode. Scroll to
+  - "[cpu]"
+    Modify the line
+    - cycles=max 
+  - "[autoexec]"
+    Add the lines
+    - mount c /mnt/sdcard/comset
+    - mount d /mnt/sdcard/
+    - c:
+    - COMSET.EXE
+    - exit
+- Magic DOSBOX  does *not support* long Windows file names.
+- Magic DOSBOX  does *not support* the full function set of the program.
+- Magic DOSBOX  *slows down* certain program functions (primarily the file
+  access).
+
+Programmdateien in Comset.zip:
+  comset.exe    SPM-Programmdatei
+  cominf.txt    Info-Textdatei fuer comset.exe
+  cominf.pdf    Erweiterte Infodatei im PDF-Format
+  comdvw.lst    Kommando-Referenzliste (VTR-PROTOKOLL) fuer comset.exe
+  comset.pif    PIF-Datei zum Start von comset.exe unter Windows
+  comset.ico    Icon fuer comset.exe unter Windows
+  cominf.tif, cominf1.tif   
+                Schaltungsausfuehrungen Rechner-Verbindungskabel
+  comset.cfg    Konfigurationsdatei, wird programmgesteuert erzeugt
+    Comset.zip enthaelt zusaetzlich zum Betrieb im DOS-Emulator:
+  dosbox.exe
+  DosRunSPM.conf
+  SPM64.cmd
+  SDL.dll
+  SDL_net.dll
+
+
+3. Programmfunktionen, Menue-Uebersicht
+---------------------------------------------------------------------------
+  Datei
+  - FileList. Dateibetrachter  
+  - Direktstart. Legt den Programm-Direktstart von SPM fuer die Funktionen
+    COM-PORT/EMPFANGEN, VTR-PROTOKOLL oder TIMECODE fest
+  - Systemzeit. Aktualisiert die Rechner-Systemuhr entsprechend der Rech-
+    ner-Echtzeituhr (RTC)
+  - DOSPrompt. Umschaltung zur DOS-Befehlsebene
+  - Beenden. Programm beenden
+- COM-Port
+  - Empfangen. Empfangen von Daten am COM-Port/an allen COM-Ports oder
+    Monitoring des Datenstroms bei externen Rechnerverbindungen, wahlweise
+    mit Loggen in Datei
+  - Senden. Manuelle Eingaben Senden, Dateien Senden oder Eingaben Senden/
+    Empfangen
+  - COM-Port. COM-Parameter festlegen
+  - Info. Anzeige der Info-Textdatei
+- VTR-Protokoll
+  - Protokoll-Monitor. Monitoring einer Editor/VTR-Verbindung
+  - VTR-Panel. Bedienpanel mit VTR-Grundfunktionen und Kommando Direkt-
+    eingabe
+  - Protokoll-Liste. Auflistung der empfangenen Kommandos
+  - Kommandofilter. Unterdrueckung periodisch wiederkehrender Kommandos
+  - TC-Evaluierung. Festlegung der Timecode-relevanten VTR-Quittungen
+  - COM-Port. COM-Nummer-Auswahl zum Anschluss des Rechner-Verbindungs-
+    kabels
+  - Optionen. Festlegung von Kommando-Referenzliste, Logdatei, Importdatei
+  - Info. Anzeige der Info-Textdatei
+- Timecode
+  - TC-Monitor. Ueberwachung der TC-Parameter von Timecode-Generatoren
+  - Protokoll-Liste. Auflistung der festgestellten Timecode-Fehlern
+  - Systemuhr. Synchronisation der Rechner-Systemuhr auf den anliegenden
+    Timecode
+  - COM-Port. COM-Nummer-Auswahl zum Anschluss des Timecode-Adapterkabels
+  - Optionen. Festlegung des TC-GPI-Ausgangs
+  - Info. Anzeige der Info-Textdatei 
+- Info
+  - Infodatei. Anzeige der Info-Textdatei.
+  - Systeminfo. Hardware-Info
+
+
+[CPM]4. Modus COM-PORT
+---------------------------------------------------------------------------
+
+Funktionen
+---------------------------------------------------------------------------
+- Empfangen
+  - ASCII-Anzeige
+  - Hex-Anzeige
+  - Loggen. Monitoring wahlfreier Protokoll-Formate in ASCII/Hex-Darstel-
+    lung oder Loggen in Datei. Die Bildschirmanzeige kann waehrend des
+    Empfangs zwischen ASCII und Hex umgeschaltet werden. Anzeigepause haelt
+    die Bildschirmanzeige an, ohne dass Monitoring oder Loggen in Datei
+    unterbrochen wird
+  - Log-Datei. Festlegung des Logdatei-Namens
+  - Header-Marken, COM-Marken, CR/LF/COM-Marken, Zeitmarken, Datummarken
+    Fehlermarken. In die empfangenen Daten koennen zur leichteren Auswer-
+    tung diverse, vom Programm generierte Marken in der Form "[<Marke>]"
+    eingefuegt werden. Die COM-Marken koennen mit einem fuehrendem Zeilen-
+    umbruch (CR/LF/COM-MARKEN) versehen werden, wodurch im Textmodus die
+    COM-Marken immer zu Beginn einer Zeile stehen. Die Fehlermarke "Error"
+    zeigt Schnittstellenfehler, auch in kombinierter Form, an -
+      02h:  Overrun Error (Fehler Ueberlauf UART-Empfangsregister)
+      04h:  Parity Error (Fehler gerade oder ungerade Paritaet)
+      08h:  Framing Error (Fehler kein oder ungueltiges Stop-Bit)
+      10h:  Break Interrupt (Spacing-Pegel laenger als Wortlaenge)
+      80h:  COM-Programmpuffer-Ueberlauf.
+  - GPI. Wird dieser Menuepunkt aktiviert, dann erzeugt jede Zeichenfolge
+    im Empfangsdatenstrom bei Uebereinstimmung mit dem GPI-Triggerwort am
+    Ausgang RTS des aktuellen COM-Ports einen positiv gerichteten Impuls
+    fuer die Dauer eines Datenbytes. Zum Anschluss des Rechners das Kabel A
+    bzw. A1 oder A2 verwenden.
+- Senden
+  - Eingabe senden
+  - Datei senden
+  - Periodisch senden
+  - Senden/Empfangen. Uebertragung manueller Eingaben in ASCII bzw. Hex
+    oder aus Dateien, wahlweise mit Sendewiederholung. Zum Anschluss des
+    Rechners mit einem anderen Rechner mit RS-232-Schnittstelle wird ein
+    Null-Modem-Kabel verwendet; fuer Senden/Empfangen wird bei einem Ziel-
+    system mit RS-422-Schnittstelle das Kabel B angeschlossen.
+- COM-Port
+  - COM-1234A. COM-Nummer festlegen. Werden fuer die separate Ueberwachung
+    von Sende- und Empfangsdaten zwei COM-Ports verwendet, muss statt der
+    COM-Nummer-Auswahl der COM-Autoscan-Modus ("A") angewaehlt werden. Der
+    Autoscan-Modus bewirkt das gleichzeitige Lesen aller installierten COM-
+    Ports. Dabei koennen die COM-Ports auch mit unterschiedlichen Parameter-
+    Einstellungen betrieben werden.
+  - Setzen. COM-Parameter festlegen. Als Vorgabe koennen u.a. ausgewaehlt
+    werden:
+
+      System       |BR     |DB |SB |Par   |DTR|RTS
+      -------------+-------+---+---+------+---+---
+      Sony/Profile | 38400 | 8 | 1 | odd  | + | +
+      ESBus        | 38400 | 8 | 1 | even | + | +
+      ClipBox      |  9600 | 8 | 1 | no   | + | +
+      Odetics      |  9600 | 8 | 1 | no   | - | -
+      -------------+-------+---+---+------+---+---
+
+  - UART. Im erweiterten COM-Port-Fenster lassen sich die UART-Register der
+    seriellen Schnittstellen direkt lesen und beschreiben. (In den Windows-
+    Versionen ist der direkte Zugriff eingeschraenkt.)
+  - In. Im Input-Fenster koennen die vier MODEM-Steuerleitungen CTS, DSR,
+    RI und RLSD in einer quasi-oszilloskopischen Darstellung angezeigt wer-
+    den (Zeitbereich von 10 Millisekunden bis max. 45 Stunden) und wahl-
+    weise in eine Datei geloggt werden (Zeitbereich unbegrenzt).
+  - Out. Im Output-Fenster lassen sich die MODEM-Steuerleitungen DTR, RTS,
+    Out1 und Out2 setzen/ruecksetzen. "F" sendet eine frei waehlbare Puls-
+    folge ueber die Steuerleitung DTR.
+- Info
+  Anzeige der Info-Textdatei
+
+
+[SPM]5. Modus VTR-PROTOKOLL
+---------------------------------------------------------------------------
+Dieser Menuepunkt ermoeglicht die formatgebundene Ueberwachung des Ueber-
+tragungsprotokolls einer Editor-/VTR-Konfiguration oder die direkte VTR-
+Steuerung mit SONY-Protokoll und RS-422/9-Pin-Schnittstelle.
+
+Das Uebertragungsprotokoll wurde von Sony als "Protocol of Remote-1 (9-pin)
+Connector" fuer ihre DVW-Serie eingefuehrt und hat sich als Standard fuer
+VTR-Steuerungen etabliert. Probleme der Datenuebertragung, die besonders
+bei der gemischten Verwendung von Geraeten verschiedener Hersteller auf-
+treten koennen, werden mit SPM durch die direkte Darstellung der Kommandos
+auf dem Bildschirm schnell und sicher erkannt.
+
+
+Funktionen
+---------------------------------------------------------------------------
+- Protokoll-Monitor
+  Monitoring einer Editor-/VTR-Verbindung und Protokoll-Darstellung auf dem
+  Bildschirm in Hex und Klartext. Zum Anschluss des Rechners das Kabel A
+  verwenden.
+- VTR-Panel
+  Bedienpanel mit VTR-Grundfunktionen.
+  - Direkt. Die Kommando-Direkteingabe ermoeglicht das Senden jedes zulaes-
+    sigen VTR-Kommandos. Die Eingabe erfolgt in Hex, aber ohne Checksumme.
+  - Scan. Automatische Uebertragung von VTR-Kommandos in aufsteigender Rei-
+    henfolge zur Ermittlung aller gueltigen Kommandos. Damit lassen sich
+    neue, noch nicht dokumentierte Kommandos finden.
+    Moegliche Bereichseingaben sind:
+    0000h-00FFh, 1000h-10FFh, 2000h-20FFh, 4000h-40FFh, 6000h-60FFh, 7000h-
+    70FFh.
+    Zum Anschluss des Rechners das Kabel B verwenden.
+- Protokoll-Liste
+  Auflistung der im Modus PROTOKOLL-MONITOR und VTR-PANEL empfangenen
+  Kommandos.
+  Die Liste kann maximal 1200 Kommandozeilen aufnehmen. Werden mehr empfan-
+  gen, werden die aeltesten empfangenen Kommandos in der Reihenfolge ihres
+  Empfangs wieder entfernt. Bei ausgeschaltetem Kommandofilter entspricht
+  eine voll gefuellte Liste einer Ueberwachungszeit von ca. 1 Minute, bei
+  eingeschaltetem Kommandofilter bis zu mehreren Stunden bis Tagen, abhaen-
+  gig von der Anzahl der empfangenen Kommandos. Die Protokoll-Liste kann in
+  eine Datei gesichert werden. Fuer eine zeitlich unbegrenzte Ueberwachungs-
+  zeit s. Menuepunkt OPTIONEN/LOGDATEI und IMPORT (s. auch  5.3. "Protokoll-
+  Liste").
+- Kommandofilter
+  Einschaltung des Kommandofilters zur Unterdrueckung periodisch wiederkeh-
+  render Kommandos. Diese Kommandos sind in der Regel Status- und Timecode-
+  Abfragen. Die Unterdrueckung dieser Kommandos ergibt eine uebersicht-
+  lichere Darstellung auf dem Bildschirm, bei der alle anderen Kommandos
+  weiterhin angezeigt werden.
+- TC-Evaluierung
+  Festlegung der Timecode-relevanten VTR-Quittungen zur Verarbeitung der
+  Zeitinformation. Die TC-Evaluierung sollte immer eingeschaltet bleiben,
+  da die Zeitinformation in die Protokoll-Liste uebernommen wird.
+- COM-Port
+  Auswahl der COM-Schnittstelle zum Anschluss des Verbindungskabels A oder
+  B und Initialisierung auf SONY-Uebertragungsparameter. Werden im Modus
+  PROTOKOLL-MONITOR fuer die Ueberwachung von Sende- und Empfangsdaten sepa-
+  rate COM-Ports verwendet, muss statt der COM-Nummer-Auswahl der COM-Auto-
+  scan-Modus ("A") angewaehlt werden; dabei das Kabel A1 oder A2 verwenden.
+- Optionen
+  - Kommandoliste. Voreingestellt als Kommando-Referenzliste ist die Datei
+    "Comdvw.lst"; sie enthaelt alle DVW/IMX-Kommandos. Ist keine gueltige
+    Kommando-Referenzliste angewaehlt, erfolgt auf dem Bildschirm keine
+    Klartextdarstellung der Kommandos.
+  - Logdatei Binaer. Loggen der reinen Sony-Protokoll-Daten im Binaerformat.
+    Alte Daten werden ueberschrieben.
+    ASCII. Loggen der Sony-Protokoll-Daten im Textformat. Alte Daten werden
+    nicht ueberschrieben, sondern die neuen Daten werden angehaengt. Die Da-
+    tei (und das Dateiformat) ist identisch mit der Datei, die im Modus
+    PROTOKOLL-LISTE/DATEI angelegt wird. Wegen der stetig ansteigenden
+    Groesse sollte die Datei, falls sie nicht mehr benoetigt wird, regel-
+    maessig geloescht werden. Die Ueberwachungszeit wird im Log-Modus nur
+    durch den verfuegbaren Platz auf dem Datentraeger begrenzt.
+    Der Log-Modus wird gestartet, wenn der Menuepunkt PROTOKOLL-MONITOR ange-
+    waehlt wird (Als Kontrolle wird in der Statuszeile "Log ein" angezeigt;
+    "Log aus" erscheint, wenn die Log-Datei nicht angelegt oder aktualisiert
+    werden kann).
+  - Importdatei Binaer. Lesen von reinen Sony-Protokoll-Daten im Binaer-
+    format, die mit dem Menuepunkt LOGDATEI BINAER geschrieben wurden.
+    Binaerdateien, die mit anderen Log- oder Terminalprogrammen erstellt
+    wurden, lassen sich importieren und ebenfalls lesen.
+    Gestartet wird der Import ueber den Menuepunkt PROTOKOLL-MONITOR.
+  - Checksum-Anzeige. Im Bedarfsfall kann die Anzeige der zum Kommando ge-
+    hoerenden Checksumme eingeschaltet werden.
+  - Kommandotyp-Evaluation. Voreinstellung ist eingeschaltet; zu Test-
+    zwecken abschaltbar.
+  - TMode. Ein-/Ausschaltung des Rechner-Timer0-Interrupts; Voreinstellung
+    ist ausgeschaltet.
+- Info. Anzeige der Info-Textdatei.
+
+Kabeltypen s. "Anschluss, Kabel-Konfigurationen"
+
+
+Protokoll-Liste
+---------------------------------------------------------------------------
+Die linke Seite des Bildschirms zeigt die vom Editor gesendeten Befehle,
+die rechte Seite die von dem VTR zurueckkommenden Quittungen, jeweils ohne
+Checksumme. In der Spalte "FC" wird im Fehlerfalle ein Fehlercode einge-
+tragen.
+Um eine gleichzeitige Darstellung der Editorkommandos und VTR-Quittungen zu
+ermoeglichen, musste fuer die Bildschirmanzeige die Hex-Darstellung auf
+8 Bytes begrenzt werden; dadurch werden z.T. Status- und Timecode-Rueckmel-
+dungen unvollstaendig dargestellt. Zur vollstaendigen Darstellung kann der
+Menuepunkt PROTOKOLL-LISTE/K-INFO angewaehlt werden.
+
+Die Spalte "FC" kann folgende Fehlercodes enthalten:
+
+  SE  Protokollformat: Check Sum Error
+  TO  Protokollformat: Time Out
+  ??  VTR-PANEL: ungueltiges Eingabe-Format
+  C*  COM-Port: Ueberlauf
+  C4  COM-Port: Parity Error
+  C8  COM-Port: Framing Error
+  C+  COM-Port: anderer Fehler
+  **  COM-Puffer: Ueberlauf
+
+Die Kopfzeile der Protokoll-Liste enthaelt im Modus PROTOKOLL-MONITOR und
+VTR-PANEL zusaetzlich eine Timecode-Anzeige fuer den aktuellen Timecode,
+eine Listen-Fuellstandsanzeige (leer - 1/2 - voll) und eine COM-Empfangs-
+anzeige (">").
+
+Um die Protokoll-Liste uebersichtlich zu halten, empfiehlt es sich, waeh-
+rend der Protokollierung den Kommandofilter eingeschaltet zu lassen.
+Sollen jedoch alle Kommandos (einschliesslich der Statuskommandos) erfasst
+werden, muss der Kommandofilter ausgeschaltet werden; der Zeitbereich wird
+dann auf die letzten 60 Sekunden der Protokollierung eingeschraenkt. Die
+TC-Evaluierung sollte waehrend der Protokollierung immer eingeschaltet
+bleiben, da die Zeitinformation mit in die Protokoll-Liste uebernommen wird.
+
+Wurde die Protokoll-Liste ueber die Importfunktion erstellt (Lesen von Sony-
+Protokoll-Daten im Binaerformat - Menuepunkt OPTIONEN/IMPORT und anschlie-
+ssend PROTOKOLL-MONITOR), dann erfolgen prinzipbedingt keine Eintragungen in
+den Spalten "Uhrzeit" und "FC".
+
+Die Protokoll-Liste kann in eine Datei gesichert werden (Menuepunkt PROTO-
+KOLL-LISTE/DATEI); sie laesst sich dann ausdrucken oder weiter bearbeiten.
+Die Datei enthaelt zusaetzlich die Spalten "Uhrzeit" und "Timecode", die in
+der Bildschirmanzeige in der Voreinstellung abgewaehlt sind. Die Protokoll-
+Liste wird in die Datei im Append-Modus gesichert, d.h., die Daten werden
+an die in der Datei schon vorhandenen Daten angehaengt. Die Datei ist die 
+gleiche, die im Modus OPTIONEN/LOGDATEI/ASCII angelegt wird. Wegen der ste-
+tig steigenden Groesse der Datei sollte sie, wenn die Daten nicht mehr be-
+noetigt werden, regelmaessig geloescht werden.
+
+
+[TCM]6. Modus TIMECODE
+---------------------------------------------------------------------------
+Eine weitere Funktion von SPM ist die Langzeitueberwachung von Timecode-
+Generatoren und TC-Uebertragungswegen entsprechend dem SMPTE/EBU-Standard.
+Dabei werden u.a. Fehler in der kontinuierlichen Zeiterzeugung erfasst.
+
+
+Funktionen
+---------------------------------------------------------------------------
+- TC-Monitor
+  Langzeitueberwachung der Timecode-Parameter von Timecode-Generatoren und
+  Timecode-Uebertragungswegen. Die Funktionen stehen auch im Play-Modus von
+  VTRs oder anderen Geraeten (z.B. Sound Recorder) zur Verfuegung.
+  Im TC-Monitor-Panel werden Zeitcode, Frame Rate, Phase Corr Flag, Color
+  Log Flag und aktuelle Fehlerart angezeigt, sowie, falls messbar, die 8V-
+  Verkopplung.
+  Soll die 8V-Verkopplung des Timecodesignals gemessen werden (Untermenue-
+  punkt 8V), dann muss am aktuell ausgewaehlten COM-Port auf Leitung DSR
+  ein Video 8-Field ID (positiv gerichteter Impuls mit HIGH >4V und LOW <1V)
+  angelegt werden.
+  Bei Umschaltung auf den Untermenuepunkt UB wird, wenn das 8-Bit ASCII Flag
+  gesetzt ist (kenntlich durch UB*), der im Timecode-Datenstrom eingebettete
+  Text angezeigt.
+  Anschluss
+  - Kabel C: Das Kabel passt den symmetrischen Ausgang des Timecode-Genera-
+    tors an den unsymmetrischen Eingang des Rechner-COM-Ports an.
+  - Kabel C1: Darf der Ausgang des Timecode-Generators auch unsymmetrisch
+    belastet werden (normalerweise moeglich, aber nicht Standard-konform),
+    dann kann dieses leicht nachbaubare Kabel in der vereinfachten Form
+    verwendet werden.
+- Protokoll-Liste
+  Die Protokoll-Liste zeigt die registrierten Timecode-Fehler der letzten
+  Protokollsitzung(en). Die Liste kann maximal 2500 Eintraege aufnehmen.
+  Wurden in den Protokollsitzungen insgesamt mehr empfangen, werden die
+  aeltesten Eintraege in der Reihenfolge ihres Empfangs wieder entfernt.
+  Eine voll gefuellte Liste entspricht einer Ueberwachungszeit von einigen
+  Minuten bis hin zu mehreren Monaten oder Jahren, abhaengig von der Anzahl
+  der registrierten Timecode-Fehlern.
+  Die Liste kann zur weiteren Bearbeitung in eine Datei gespeichert werden.
+- Systemuhr
+  Synchronisation der Rechner-Echtzeituhr (RTC) und Systemuhr auf den anlie-
+  genden Timecode. (Bei der Ableitung des anliegenden Timecodes von einer
+  DCF77-Uhr wird die Rechneruhr sekundengenau auf die DCF77-Zeit synchroni-
+  siert.)
+- COM-Port
+  COM-Auswahl zum Anschluss des Timecode-Generators ueber das Timecode-
+  Adapterkabel. Nominalpegel des Timecode-Signals 2Vss.
+  Ueber den Menuepunkt COM-PORT/UARTSCOPE kann das Vorhandensein des Time-
+  code-Signals gecheckt werden.
+- Optionen
+  - Protokoll-Marken. Einfuegung von Zeitmarken zur zeitlichen Strukturie-
+    rung der Protokoll-Liste.
+  - TC-GPI. Festlegung des TC-GPI-Ausganges am aktuell ausgewaehlten COM-
+    Port auf Leitung RTS. Bei aktiviertem GPI-Ausgang wird ein Impuls (-12V
+    bzw. +12V nom.) fuer die Dauer eines Timecode-Wortes (= 1 Frame)
+    erzeugt.
+  - TMode. An-/Abschaltung des Rechner-Timer0-Interrupts (Voreinstellung
+    ist abgeschaltet; moeglichst nicht aendern, s. unten).
+- Info
+  Anzeige der Info-Textdatei.
+
+
+Software-Voraussetzungen
+---------------------------------------------------------------------------
+Der TC-Monitor laeuft, wegen der Realzeit-bezogenen Timecode-Dekodierung,
+nicht stoerungsfrei im Windows-DOS-Fenster, d.h., er muss immer im "Single
+DOS Mode" ausgefuehrt werden. Ausserdem wird waehrend des Betriebs des TC-
+Monitors die Rechner-Systemuhr (Timer0-Interrupt) gesperrt.
+
+Serviceroutinen, z.B. Power Saver einiger Rechner-Hersteller, die aus dem
+Rechner-BIOS heraus betrieben werden, koennen im Einzelfalle Stoerungen ver-
+ursachen (kenntlich durch "*" in der Protokoll-Liste). Da diese Routinen
+nicht programmgesteuert deaktiviert werden koennen, muessen sie bei Bedarf
+manuell abgeschaltet werden.
+
+Die Kompensation des "One-word Decoding Delay", wie sie das EBU-Dokument
+Tech. 3097-E vorgibt, wird im TC-Monitor angewendet, um eine verzoegerungs-
+freie Timecode-Anzeige zu gewaehrleisten.
+
+Kabeltypen s. "Anschluss, Kabel-Konfigurationen"
+
+
+Protokoll-Liste
+---------------------------------------------------------------------------
+Die Protokoll-Liste besteht aus den Spalten Systemzeit, Timecode, User
+Bits, CLF (Color Lock Flag Bit), CL (Color Lock), Fehler/Status, FC (Fehler-
+Code). Die in die Spalte Systemzeit eingetragene Rechner-Uhrzeit kann vor
+dem Start der Protokollsitzung auf den zu ueberwachenden Timecode synchro-
+nisiert werden (Menuepunkt SYSTEMUHR).
+
+Die Spalte FC enthaelt im Fehlerfalle einen der folgenden Eintraege:
+
+- Format?: Stoerung des Timecodeformats:
+    Syncwort fehlerhaft oder nicht gefunden
+    Timecodewort entspricht nicht der Soll-Laenge
+    Timecodewort-Impulsfolgefrequenz hoeher als 2x PLAY
+    Timecodewort wird in Rueckwaertsrichtung ausgegeben
+    Timecodesignal (zeitweise) unterbrochen
+- Zeit?: Stoerung der Zeitinformation, d.h., ein Sprung des kontinuierlich
+  aufsteigenden Timecodewertes wurde festgestellt
+- *: 1-Bit-Fehler. Ursache koennen im Einzelfalle auch Rechner-interne Ser-
+  viceroutinen sein (Erlaeuterungen s. unter "Software-Voraussetzungen").
+
+Die Protokoll-Liste kann in eine Datei gesichert werden (Menuepunkt PROTO-
+KOLL-LISTE/DATEI); sie laesst sich dann ausdrucken oder weiter bearbeiten.
+
+
+7. Anschluss, Kabel-Konfigurationen
+---------------------------------------------------------------------------
+Um einen leichten Nachbau der Kabel A, A1 und B zu gewaehrleisten, wurde
+eine passive, von der RS-422-Norm abweichende Variante gewaehlt. Bei Gerae-
+ten, deren RS-422-Ports mit nicht normgerechten Pegeln arbeiten, funktio-
+nieren die passiven Kabel A oder A1 moeglicherweise nicht; dann das Kabel
+A2 verwenden.
+Das leicht nachzubauende Kabel C1 ist ebenfalls nicht Standard-konform, ist
+aber normalerweise voll funktionsfaehig.
+
+Der anzuwendende Kabeltyp kann folgender Tabelle entnommen werden.
+
+  Modus          |Kabeltyp   |Beispielkonfiguration
+  ---------------+-----------+---------------------------------------------
+  COM-Port       |Kabel A    |Editor/VTR/RS-422 -> SPM/RS-232C/1 COM-Port
+  Empfangen      |           |(formatfreies Monitoring). 1)
+                 |Kabel A1   |Editor/VTR/RS-422 -> SPM/RS-232C/2 COM-Ports
+                 |           |(formatfreies Monitoring), COM-PORT-Auswahl
+                 |           |auf "A" (Autoscan)
+  ---------------+-----------+---------------------------------------------
+  COM-Port       |Kabel B    |SPM/RS-232C -> VTR/RS-422 (formatfreies
+  Senden         |           |Senden)
+                 |Null-Mo-   |SPM/RS-232C -> Rechner/RS-232C (formatfreies
+                 |dem-Kabel  |Senden)
+  ---------------+-----------+---------------------------------------------
+  COM-Port       |Kabel B    |SPM/RS-232C -> VTR/RS-422 (formatfreies
+  Senden/        |           |Senden/Empfangen)
+  Empfangen      |           |
+  ---------------+-----------+---------------------------------------------
+  VTR-Protokoll  |Kabel A    |Editor/VTR/RS-422 -> SPM/RS-232C/1 COM-Port
+  Protokoll-     |           |
+  monitor        |Kabel A1   |Editor/VTR/RS-422 -> SPM/RS-232C/2 COM-Ports,
+                 |           |COM-PORT-Auswahl auf "A" (Autoscan)
+                 |Kabel A2 2)|Editor/VTR/RS-422 -> SPM/RS-232C/2 COM-Ports,
+                 |           |COM-PORT-Auswahl auf "A" (Autoscan)
+  ---------------+-----------+---------------------------------------------
+  VTR-Protokoll  |Kabel B    |SPM/RS-232C -> VTR/RS-422
+  VTR-Panel      |           |
+  ---------------+-----------+---------------------------------------------
+  Timecode       |Kabel C  3)|Timecode-Generator/XLR -> SPM/RS-232C
+  TC-Monitor     |           |
+                 |Kabel C1 3)|Timecode-Generator/XLR -> SPM/RS-232C
+                 |           |
+  ---------------+-----------+---------------------------------------------
+1) SPM = Rechner mit Serial Port Monitor
+2) Bei zwei RS-232C-COM-Ports kann dieses fertig vorkonfektionierte RS-422-
+   konforme Kabel benutzt werden. Lieferanten sind z.B. fuer das Kabel:
+     Quantel (Kabelnummer 2080-54A-010A),
+   fuer zwei zur Umsetzung von RS-422 nach RS-232 benoetigte Converter:
+     K-Systems/UK (Type K422-99)
+3) Kabel C: Passt den symmetrischen Ausgang des Timecode-Generators an den
+   unsymmetrischen Eingang des RS-232C-Ports an und enthaelt zwei weitere
+   Anschluesse (TC-GPI, Video 8-Field ID).
+   Kabel C1: Unsymmetrischer Anschluss an den Timecode-Generator, nicht
+   Standard-konform, aber leicht nachbaubar
+
+Zur Schaltungsausfuehrung der Kabeltypen s. "Cominf.tif".
+Fuer die Kabeltypen A1 und A2 s. "Cominf1.tif".
+
+August 2008/15 www.paramind.info
